@@ -2,6 +2,41 @@
  * Create a list that holds all of your cards
  */
 
+let cardList = [
+    "fa-diamond",
+    "fa-paper-plane-o",
+    "fa-anchor",
+    "fa-bolt",
+    "fa-cube",
+    "fa-anchor",
+    "fa-leaf",
+    "fa-bicycle",
+    "fa-diamond",
+    "fa-bomb",
+    "fa-leaf",
+    "fa-bomb",
+    "fa-bolt",
+    "fa-bicycle",
+    "fa-paper-plane-o",
+    "fa-cube"
+];
+
+let newCardList = "";
+const deckSelector = document.querySelector('.deck');
+
+cardList = shuffle(cardList);
+newCardList = generateCard(cardList, deckSelector);
+
+function generateCard(cards, deck) {
+    for (let card of cards) {
+        let newCards =`
+        <li class="card">
+            <i class="fa ${card}"></i>
+        </li>`;
+        deck.insertAdjacentHTML('afterbegin', newCards);
+        //console.log(newCards);
+    };
+};
 
 /*
  * Display the cards on the page
@@ -12,7 +47,7 @@
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
