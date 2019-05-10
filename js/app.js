@@ -70,10 +70,16 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+// use console.log(event) to see all the characteristics of an object
+function updateClass(event) {
+    event.srcElement.classList.add('open', 'show');
+};
+
 // with thanks to: https://davidwalsh.name/event-delegate
 function cardClicked(event) {
     if (event.target && event.target.nodeName == "LI") {
-        console.log('clicked!');
+        updateClass(event);
+        //console.log(event);
     };
 };
 
