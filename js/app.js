@@ -34,8 +34,7 @@ function generateCard(cards, deck) {
             <i class="fa ${card}"></i>
         </li>`;
         deck.insertAdjacentHTML('afterbegin', newCards);
-        //console.log(newCards);
-    };
+    }
 };
 
 /*
@@ -58,8 +57,7 @@ function shuffle(array) {
     }
 
     return array;
-}
-
+};
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -71,3 +69,12 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+// with thanks to: https://davidwalsh.name/event-delegate
+function cardClicked(event) {
+    if (event.target && event.target.nodeName == "LI") {
+        console.log('clicked!');
+    };
+};
+
+deckSelector.addEventListener('click', cardClicked);
