@@ -23,6 +23,8 @@ let cardList = [
 
 let newCardList = "";
 const deckSelector = document.querySelector('.deck');
+let cardHolder = [];
+let firstCard = [];
 
 cardList = shuffle(cardList);
 newCardList = generateCard(cardList, deckSelector);
@@ -70,9 +72,33 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+function compareCards() {
+
+    console.log(cardHolder[0], cardHolder[1]);
+    console.log(cardHolder[0] == cardHolder[1]);
+
+    if (cardHolder[0] == cardHolder[1]) {
+        console.log('Match!');
+        event.srcElement.classList.add('open', 'show');
+        cardHolder = [];
+    } else {
+        //cardHolder.length = 1;
+        cardHolder.pop();
+        console.log('Not a match!');
+    };
+};
+
 // use console.log(event) to see all the characteristics of an object
 function updateClass(event) {
-    event.srcElement.classList.add('open', 'show');
+    //detects whether array is empty
+    if (cardHolder.length == 0) {
+        event.srcElement.classList.add('open', 'show');
+        cardHolder.push(event.target.innerHTML);
+        console.log(event);
+    } else if (event.srcElement.className != "card open show" && cardHolder.length > 0) {
+        cardHolder.push(event.target.innerHTML);
+        compareCards();
+    };
 };
 
 // with thanks to: https://davidwalsh.name/event-delegate
