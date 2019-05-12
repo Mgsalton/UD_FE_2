@@ -24,7 +24,10 @@ let cardList = [
 let newCardList = "";
 const deckSelector = document.querySelector('.deck');
 const restartSelector = document.querySelector('.restart');
+const moveCountSelector = document.querySelector('.moves');
+const starSelector = document.querySelector('.stars');
 let winCondition = 0;
+let clickCount = 0;
 let cardHolder = [];
 //let firstCard = [];
 
@@ -120,9 +123,31 @@ function updateClass(event) {
     };
 };
 
+function updateStars() {
+    if (clickCount < 4) {
+        console.log("don't delete a star now");
+    } else if (clickCount == 4) {
+        starSelector.removeChild(starSelector.childNodes[1]);
+        console.log("delete a star now");
+    } else if (clickCount == 6) {
+        starSelector.removeChild(starSelector.childNodes[2]);
+        console.log("delete a star now");
+    } else if (clickCount == 8) {
+        starSelector.removeChild(starSelector.childNodes[3]);
+        console.log("delete a star now");
+    };
+};
+
+function updateMoves() {
+    clickCount += 1;
+    moveCountSelector.innerHTML = clickCount;
+};
+
 // with thanks to: https://davidwalsh.name/event-delegate
 function cardClicked(event) {
     if (event.target && event.target.nodeName == "LI") {
+        updateMoves();
+        updateStars();
         updateClass(event);
         //console.log(event);
     };
