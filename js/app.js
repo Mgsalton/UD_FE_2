@@ -23,11 +23,10 @@ let cardList = [
 
 let newCardList = "";
 const deckSelector = document.querySelector('.deck');
+const restartSelector = document.querySelector('.restart');
+let winCondition = 0;
 let cardHolder = [];
-let firstCard = [];
-
-cardList = shuffle(cardList);
-newCardList = generateCard(cardList, deckSelector);
+//let firstCard = [];
 
 function generateCard(cards, deck) {
     for (let card of cards) {
@@ -72,15 +71,35 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-function compareCards() {
+function restart() {
+    console.log('Hit restart');
+    location.reload();
+};
 
-    console.log(cardHolder[0], cardHolder[1]);
-    console.log(cardHolder[0] == cardHolder[1]);
+function endGame() {
+    window.alert('A winner is you!');
+};
 
-    if (cardHolder[0] == cardHolder[1]) {
-        console.log('Match!');
+function flipCard() {
+    if (winCondition != 8) {
+        console.log('Match! ' + winCondition);
         event.srcElement.classList.add('open', 'show');
         cardHolder = [];
+    } else {
+        event.srcElement.classList.add('open', 'show');
+        cardHolder = [];
+        endGame();
+    };
+};
+
+function compareCards() {
+    /*debug messaging
+        console.log(cardHolder[0], cardHolder[1]);
+        console.log(cardHolder[0] == cardHolder[1]);
+    */
+    if (cardHolder[0] == cardHolder[1]) {
+        winCondition += 1;
+        flipCard();
     } else {
         //cardHolder.length = 1;
         cardHolder.pop();
@@ -109,4 +128,20 @@ function cardClicked(event) {
     };
 };
 
-deckSelector.addEventListener('click', cardClicked);
+function runningProgram() {
+    deckSelector.addEventListener('click', cardClicked);
+    restartSelector.addEventListener('click', restart);
+};
+
+function startPoint() {
+    cardList = shuffle(cardList);
+    newCardList = generateCard(cardList, deckSelector);
+    return null;
+};
+
+startPoint();
+runningProgram();
+
+
+//console.log("You win!");
+// while there aren't 8 matches, do this code
