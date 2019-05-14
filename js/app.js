@@ -26,6 +26,7 @@ const deckSelector = document.querySelector('.deck');
 const restartSelector = document.querySelector('.restart');
 const moveCountSelector = document.querySelector('.moves');
 const starSelector = document.querySelector('.stars');
+const modalSelector = document.querySelector('.modal');
 let winCondition = 0;
 let clickCount = 0;
 let cardHolder = [];
@@ -80,7 +81,9 @@ function restart() {
 };
 
 function endGame() {
-    window.alert('A winner is you!');
+    //window.alert('A winner is you!');
+    //modalSelector.style.visibility ="visible";
+    modalSelector.classList.toggle("displayModal");
 };
 
 function flipCard() {
