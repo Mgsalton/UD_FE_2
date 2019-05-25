@@ -22,6 +22,8 @@ let cardList = [
 ];
 
 let newCardList = "";
+let cardOne = "";
+let cardTwo = "";
 const deckSelector = document.querySelector('.deck');
 const restartSelector = document.querySelector('.restart');
 const moveCountSelector = document.querySelector('.moves');
@@ -33,6 +35,7 @@ const hourSelector = document.querySelector('.hours');
 let winCondition = 0;
 let clickCount = 0;
 let cardHolder = [];
+let cleanUpFlag = 0;
 let seconds = 0;
 let minutes = 0;
 //let firstCard = [];
@@ -91,30 +94,37 @@ function endGame() {
     modalSelector.classList.toggle("displayModal");
 };
 
-function flipCard() {
+function noMatch() {
+    cardOne.srcElement.classList.remove('match');
+    cardOne.srcElement.classList.add('nomatch');
+    cardTwo.srcElement.classList.add('open', 'show', 'nomatch');
+    cleanUpFlag = 1;
+    cardHolder = [];
+    console.log('Not a match!');
+};
+
+function cardsMatch() {
     if (winCondition != 8) {
         console.log('Match! ' + winCondition);
-        event.srcElement.classList.add('open', 'show');
+        cardOne.srcElement.classList.add('match');
+        cardTwo.srcElement.classList.add('open', 'show', 'match');
         cardHolder = [];
     } else {
-        event.srcElement.classList.add('open', 'show');
+        cardOne.srcElement.classList.add('match');
+        cardTwo.srcElement.classList.add('open', 'show', 'match');
         cardHolder = [];
         endGame();
     };
 };
 
 function compareCards() {
-    /*debug messaging
-        console.log(cardHolder[0], cardHolder[1]);
-        console.log(cardHolder[0] == cardHolder[1]);
-    */
     if (cardHolder[0] == cardHolder[1]) {
         winCondition += 1;
-        flipCard();
+        cardsMatch();
     } else {
         //cardHolder.length = 1;
-        cardHolder.pop();
-        console.log('Not a match!');
+        //cardHolder.pop();
+        noMatch();
     };
 };
 
@@ -122,12 +132,16 @@ function compareCards() {
 function updateClass(event) {
     //detects whether array is empty
     if (cardHolder.length == 0) {
-        event.srcElement.classList.add('open', 'show');
-        cardHolder.push(event.target.innerHTML);
-        console.log(event);
-    } else if (event.srcElement.className != "card open show" && cardHolder.length > 0) {
-        cardHolder.push(event.target.innerHTML);
+        cardOne = event;
+        cardOne.srcElement.classList.add('open', 'show');
+        cardHolder.push(cardOne.target.innerHTML);
+        console.log(cardOne);
+    } else if (event.srcElement.className == "card") {
+        cardTwo = event;
+        cardHolder.push(cardTwo.target.innerHTML);
         compareCards();
+    } else {
+        return;
     };
 };
 
@@ -165,9 +179,20 @@ function updateMoves() {
     moveCountSelector.innerHTML = clickCount;
 };
 
+function cleanUp() {
+    if (cleanUpFlag == 1) {
+        cardOne.srcElement.classList.remove('open', 'show', 'nomatch');
+        cardTwo.srcElement.classList.remove('open', 'show', 'nomatch');
+        cleanUpFlag = 0;
+    } else {
+        return;
+    };
+};
+
 // with thanks to: https://davidwalsh.name/event-delegate
 function cardClicked(event) {
     if (event.target && event.target.nodeName == "LI") {
+        cleanUp();
         updateMoves();
         startTimer();
         updateStars();
