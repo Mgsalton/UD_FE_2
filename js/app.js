@@ -27,9 +27,14 @@ const restartSelector = document.querySelector('.restart');
 const moveCountSelector = document.querySelector('.moves');
 const starSelector = document.querySelector('.stars');
 const modalSelector = document.querySelector('.modal');
+const secondSelector = document.querySelector('.seconds');
+const minuteSelector = document.querySelector('.minutes');
+const hourSelector = document.querySelector('.hours');
 let winCondition = 0;
 let clickCount = 0;
 let cardHolder = [];
+let seconds = 0;
+let minutes = 0;
 //let firstCard = [];
 
 function generateCard(cards, deck) {
@@ -141,6 +146,20 @@ function updateStars() {
     };
 };
 
+function startTimer() {
+    // credit: http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/
+    if (clickCount == 1) {
+        timer = setInterval(function() {
+            seconds ++;
+            secondSelector.innerText = seconds % 60;
+            minutes = minuteSelector.innerText = parseInt(seconds / 60);
+            hourSelector.innerText = parseInt(minutes / 60);
+        }, 1000);
+    } else if (clickCount > 1) {
+        return;
+    };
+};
+
 function updateMoves() {
     clickCount += 1;
     moveCountSelector.innerHTML = clickCount;
@@ -150,6 +169,7 @@ function updateMoves() {
 function cardClicked(event) {
     if (event.target && event.target.nodeName == "LI") {
         updateMoves();
+        startTimer();
         updateStars();
         updateClass(event);
         //console.log(event);
