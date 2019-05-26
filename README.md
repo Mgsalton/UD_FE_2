@@ -1,21 +1,38 @@
 # Memory Game Project
-## By Mathew Alton
+### By Mathew Alton
 
 ## Table of Contents
 
+* [About this program](#about)
 * [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Scoring](#scoring)
+* [Credits](#credits)
+
+## About this program
+
+What you're about to see is a simple memory game created using HTML, CSS, and Javascript. The objective of this game is to match 8 sets of cards by the icons that will appear each time a card is clicked. 
+
+At the beginning of each play session the cards are placed face-down so that these icons cannot be seen, so a bit of guesswork will be required at the very start. To ensure no two games are ever the same, the cards are randomized each time the program is reset.
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+1. The game--and timer--will start once any card on the screen is clicked
+2. Once a card has been clicked, it will 'flip' over to reveal an icon
+3. Your challenge is to find the matching card to form a pair. Once you've matched all 4 pairs, the game will end
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Scoring
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+1. Each time a card is clicked, the move counter will increment by 1
+2. Your star level (up to a total of 3) will start to drop if too many moves are made in a single session
+3. Your objective, should you choose to accept it, is to complete the game with as high a star rating as possible
+4. For an added challenge, see if you can beat your previous time while maintaining a high star level
 
-## Contributing
+## Credits
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+..* The shuffling functionality was taken from the following page: http://stackoverflow.com/a/2450976
+..* The timer functionality was inspired by the code from this resource: http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/
+..* The matching algorithm was also inspired from this resource: https://davidwalsh.name/event-delegate
+..* Finally... stackoverflow and its many contributors--where would we be without it?
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
