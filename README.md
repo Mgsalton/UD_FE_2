@@ -1,4 +1,5 @@
 # Memory Game Project
+## By Mathew Alton
 
 ## Table of Contents
 
