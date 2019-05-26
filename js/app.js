@@ -26,7 +26,7 @@ let cardOne = "";
 let cardTwo = "";
 const deckSelector = document.querySelector('.deck');
 const restartSelector = document.querySelector('.restart');
-const moveCountSelector = document.querySelector('.moves');
+const moveCountSelector = document.querySelector('.moveNumber');
 const starSelector = document.querySelector('.stars');
 const modalSelector = document.querySelector('.modal');
 const secondSelector = document.querySelector('.seconds');
@@ -146,15 +146,15 @@ function updateClass(event) {
 };
 
 function updateStars() {
-    if (clickCount < 4) {
+    if (clickCount < 32) {
         console.log("don't delete a star now");
-    } else if (clickCount == 4) {
+    } else if (clickCount == 32) {
         starSelector.removeChild(starSelector.childNodes[1]);
         console.log("delete a star now");
-    } else if (clickCount == 6) {
+    } else if (clickCount == 64) {
         starSelector.removeChild(starSelector.childNodes[2]);
         console.log("delete a star now");
-    } else if (clickCount == 8) {
+    } else if (clickCount == 88) {
         starSelector.removeChild(starSelector.childNodes[3]);
         console.log("delete a star now");
     };

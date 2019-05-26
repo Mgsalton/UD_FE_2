@@ -1,50 +1,54 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Matching Game</title>
-    <meta name="description" content="">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet" href="css/app.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Matching Game</h1>
-        </header>
-
-        <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
-
-        	<span class="moves">0</span> Moves
-
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
-        </section>
-        <section class="timer">
-            <p>Timer:&nbsp<span class="hours">0</span>&nbsp Hrs
+    <head>
+        <meta charset="utf-8">
+        <title>Matching Game</title>
+        <meta name="description" content="">
+        <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+        <div class="mainTitle">
+            <header>
+                <h1>Matching Game</h1>
+            </header>
+        </div>
+        <div>
+            <section class="scoreSection">
+                <ul class="stars">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                </ul>
+            </section>
+        </div>
+        <div class="cardDeck">
+            <ul class="deck">
+            </ul>
+        </div>
+        <div class="timer">
+            <p class="timerTitle">Time:&nbsp<span class="hours">0</span>&nbsp Hrs
                 <span class="minutes">0</span>&nbsp Mins
                 <span class="seconds">0</span>&nbsp Secs
             </p>
-        </section>
-        <ul class="deck">
-            <!-- Inserted via JS -->
-        </ul>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal">
-        <div class="modalContent">
-            <h1>Congratulations!</h1>
         </div>
-    </div>
-
-    <script src="js/app.js"></script>
-</body>
+        <div class="moveSection">
+            <section>
+                <p class="moveTitle">Moves:&nbsp<span class="moveNumber">0</span></p>
+            </section>
+        </div>
+        <!-- Modal -->
+        <div class="modal">
+            <div class="modalContent">
+                <h1>Congratulations!</h1>
+            </div>
+        </div>
+        <footer class="mainFooter">
+            <div class="restart">
+                <i class="fa fa-repeat"></i>
+            </div>
+        </footer>
+        <script src="js/app.js"></script>
+    </body>
 </html>
