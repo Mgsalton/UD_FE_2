@@ -29,6 +29,7 @@ const restartSelector = document.querySelector('.restart');
 const moveCountSelector = document.querySelector('.moveNumber');
 const starSelector = document.querySelector('.stars');
 const modalSelector = document.querySelector('.modal');
+const modalContentSelector = document.querySelector('.modalContent')
 const secondSelector = document.querySelector('.seconds');
 const minuteSelector = document.querySelector('.minutes');
 const hourSelector = document.querySelector('.hours');
@@ -38,7 +39,9 @@ let cardHolder = [];
 let cleanUpFlag = 0;
 let seconds = 0;
 let minutes = 0;
+let hours = 0;
 let timer = 0;
+let starScore = "";
 //let firstCard = [];
 
 function generateCard(cards, deck) {
@@ -89,6 +92,19 @@ function restart() {
     location.reload();
 };
 
+function populateModal(modal) {
+
+    let starScore = starSelector.innerHTML;
+    let modalText =`
+    <h1>Congratulations!</h1>
+    <h2>You completed the game in:</h2>
+    <h2>${hours} hours, ${minutes} mins, and ${seconds} seconds</h2>
+    <h2>In ${clickCount} moves</h2>
+    <h2>Giving you an overall star rating of:</h2>
+    <h2> class="outputStars">${starScore}</h2>`;
+    modal.insertAdjacentHTML('afterbegin', modalText);
+};
+
 function endtimer() {
     clearInterval(timer);
 };
@@ -97,6 +113,7 @@ function endGame() {
     //window.alert('A winner is you!');
     //modalSelector.style.visibility ="visible";
     endtimer();
+    populateModal(modalContentSelector);
     modalSelector.classList.toggle("displayModal");
 };
 
@@ -173,7 +190,7 @@ function startTimer() {
             seconds ++;
             secondSelector.innerText = seconds % 60;
             minutes = minuteSelector.innerText = parseInt(seconds / 60);
-            hourSelector.innerText = parseInt(minutes / 60);
+            hours = hourSelector.innerText = parseInt(minutes / 60);
         }, 1000);
     } else if (clickCount > 1) {
         return;
