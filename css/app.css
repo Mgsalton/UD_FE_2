@@ -1,3 +1,7 @@
+/*
+* Default stylings
+*/
+
 html {
     box-sizing: border-box;
 }
@@ -17,9 +21,20 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/geometry2.png');
     font-family: 'Coda', cursive;
 }
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    color: white;
+}
+
+/*
+* Styles for the main body
+*/
 
 .mainTitle {
     font-size: 1.5em;
@@ -47,7 +62,6 @@ body {
 .moveSection,
 .scoreSection,
 .timer {
-    /*background-color: green;*/
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -91,16 +105,9 @@ body {
   color: #2e3d49;
 }
 
-
-h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    color: white;
-}
-
 /*
- * Styles for the deck of cards
- */
+* Styles for the deck of cards
+*/
 
 .cardDeck {
     display: flex;
@@ -159,8 +166,8 @@ h1 {
 }
 
 /*
- * Styles for the Score Panel
- */
+* Styles for the modal
+*/
 
 .modal {
     visibility: hidden;
