@@ -38,6 +38,7 @@ let cardHolder = [];
 let cleanUpFlag = 0;
 let seconds = 0;
 let minutes = 0;
+let timer = 0;
 //let firstCard = [];
 
 function generateCard(cards, deck) {
@@ -88,9 +89,14 @@ function restart() {
     location.reload();
 };
 
+function endtimer() {
+    clearInterval(timer);
+};
+
 function endGame() {
     //window.alert('A winner is you!');
     //modalSelector.style.visibility ="visible";
+    endtimer();
     modalSelector.classList.toggle("displayModal");
 };
 
