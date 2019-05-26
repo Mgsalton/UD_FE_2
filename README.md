@@ -29,10 +29,10 @@ At the beginning of each play session the cards are placed face-down so that the
 
 ## Credits
 
-..* The shuffling functionality was taken from the following page: http://stackoverflow.com/a/2450976
-..* The timer functionality was inspired by the code from this resource: http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/
-..* The matching algorithm was also inspired from this resource: https://davidwalsh.name/event-delegate
-..* Finally... stackoverflow and its many contributors--where would we be without it?
+* The shuffling functionality was taken from the following page: http://stackoverflow.com/a/2450976
+* The timer functionality was inspired by the code from this resource: http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/
+* The matching algorithm was also inspired from this resource: https://davidwalsh.name/event-delegate
+* Finally... stackoverflow and its many contributors--where would we be without it?
 
 
 
